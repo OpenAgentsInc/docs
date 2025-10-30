@@ -10,21 +10,17 @@ icon: rocket
 - Node.js 18+
 - Tailscale (recommended) or same‑LAN connectivity
 
-## 1) Clone and prepare
+## 1) Start Tricoder CLI
 
 ```bash
-git clone https://github.com/OpenAgentsInc/openagents && cd openagents
+npx tricoder
 ```
 
-Optional: use the Tricoder CLI to help print your desktop IP, generate a QR, and auto‑run the bridge.
-
-```bash
-npx tricoder --run-bridge
-```
-
-Notes
-- Prefers your Tailscale IP (100.x) when available; otherwise falls back to your LAN IP.
-- Binds the bridge to `0.0.0.0:8787` by default so both Tailscale and LAN addresses work.
+What it does
+- Starts the desktop bridge automatically
+- Prints your Desktop IP and a pairing QR/deep link
+- Prefers your Tailscale IP (100.x) when available; otherwise falls back to LAN IP
+- Binds the bridge to `0.0.0.0:8787` by default so both Tailscale and LAN addresses work
 
 ## 2) Run the bridge (manual option)
 
