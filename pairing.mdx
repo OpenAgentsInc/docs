@@ -1,0 +1,51 @@
+---
+title: Pairing
+description: Pair the mobile app with your desktop bridge using a QR code or deep link.
+icon: qr-code
+---
+
+## Overview
+
+Tricoder uses a one‑time pairing code to connect your phone to the desktop bridge. The code includes your desktop host/IP, port, and a durable token.
+
+## Generate a QR and deep link
+
+```bash
+# From the repo root
+npx tricoder
+
+# Or also auto‑run the bridge
+npx tricoder --run-bridge
+```
+
+What you’ll see
+- Desktop IP: prefers Tailscale (100.x) or falls back to LAN IP
+- WebSocket URL: `ws://<host>:8787/ws`
+- Deep link: `openagents://connect?j=<base64url>`
+- An ASCII QR you can scan from the app
+
+App pairing
+- Tricoder app → Scan Code on Onboarding or Settings
+- Or tap the deep link on your phone to auto‑fill and connect
+
+## Durable token
+
+- The bridge enforces a token on non‑localhost binds to protect the control plane.
+- The token is stored in `~/.openagents/bridge.json` and reused across restarts.
+- The CLI reads/reuses the same token so you don’t need to rescan.
+
+Rotate on demand
+
+```bash
+npx tricoder --rotate-token
+# or set TRICODER_ROTATE_TOKEN=1
+```
+
+## Manual entry
+
+If scanning isn’t possible, enter the Desktop IP shown by the CLI. Use your Tailscale IP when available; otherwise use your LAN IP (e.g., `192.168.x.y`).
+
+## Security notes
+
+- Do not share your pairing QR or deep link.
+- Keep token auth enabled when binding beyond `127.0.0.1`.

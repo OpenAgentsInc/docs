@@ -1,0 +1,51 @@
+---
+title: Getting Started
+description: Set up the desktop bridge and pair the mobile app in minutes.
+icon: rocket
+---
+
+## Prerequisites
+
+- Rust toolchain (for the bridge)
+- Node.js 18+
+- Tailscale (recommended) or same‑LAN connectivity
+
+## 1) Clone and prepare
+
+```bash
+git clone https://github.com/OpenAgentsInc/openagents && cd openagents
+```
+
+Optional: use the Tricoder CLI to help print your desktop IP, generate a QR, and auto‑run the bridge.
+
+```bash
+npx tricoder --run-bridge
+```
+
+Notes
+- Prefers your Tailscale IP (100.x) when available; otherwise falls back to your LAN IP.
+- Binds the bridge to `0.0.0.0:8787` by default so both Tailscale and LAN addresses work.
+
+## 2) Run the bridge (manual option)
+
+If you prefer not to use the CLI helper, you can run the bridge directly:
+
+```bash
+cargo run -p oa-bridge -- --bind 0.0.0.0:8787
+```
+
+This launches the WebSocket at `ws://<host>:8787/ws` and sets up local sync.
+
+## 3) Pair your phone
+
+- In your terminal, `npx tricoder` prints a QR and a deep link.
+- On your phone, open Tricoder → Scan Code (or tap the deep link) to connect.
+- You can also manually enter your Desktop IP if needed.
+
+## 4) You’re connected
+
+The app shows bridge status and starts streaming runs. See Using Tricoder for basics (viewing history, sending prompts, interrupting runs).
+
+Tips
+- Keep Tailscale running for reliable remote connectivity.
+- The bridge token is durable and stored in `~/.openagents/bridge.json` so you don’t need to rescan after restarts.

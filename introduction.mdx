@@ -1,51 +1,26 @@
 ---
 title: Introduction
-description: 'OpenAgents is a platform for building, selling and using AI agents.'
-icon: 'hand-wave'
+description: OpenAgents Tricoder is a mobile command center for your coding agents.
+icon: hand-wave
 ---
 
-import SiteBanner from '/snippets/site-banner.mdx';
+## What Is Tricoder
 
-<SiteBanner />
+OpenAgents Tricoder lets you manage and steer your coding agents from your phone. It connects your mobile app to a local desktop bridge that runs and supervises the Codex CLI, streams live output, and syncs session history for quick context.
 
-## The Basics
+Highlights
+- Tailscale‑first connectivity with seamless LAN fallback
+- One‑time pairing via QR or deep link; durable bridge token
+- Live streaming of messages, reasoning, and tool activity
+- Offline‑first local sync using Tinyvex (SQLite + WS)
 
-Chat with top AI models and agents or build your own agent with a few clicks.
+## How It Works
 
-<CardGroup cols={2}>
-  <Card
-    title="AI Chat"
-    icon="messages"
-    href="/chat"
-  >
-    Chat with AI agents and base models
-  </Card>
-  <Card
-    title="Build Agents"
-    icon="robot"
-    href="/build-agents"
-  >
-    Create agents, earn rewards
-  </Card>
-</CardGroup>
+- Bridge (Rust): boots locally on your desktop and exposes a secure WebSocket on `ws://<host>:8787/ws`.
+- Tricoder CLI: `npx tricoder` prints your desktop IP, generates a pairing code/QR, and can auto‑run the bridge.
+- Mobile App (Expo): scans or opens the deep link to connect and control your agent runs.
 
-## Advanced Agents
-
-Developers can add advanced agent features using reusable **_plugins_** or independent **_nodes_**.
-
-<CardGroup cols={2}>
-  <Card
-    title="Agent Plugins"
-    icon="screwdriver-wrench"
-    href="/plugins"
-  >
-    Write plugins for custom agent functionality, earn rewards
-  </Card>
-  <Card
-    title="Nodes Python SDK"
-    icon="code"
-    href="/python-sdk"
-  >
-    Build long-running Nostr nodes using our open agents protocol
-  </Card>
-</CardGroup>
+Next steps
+- Start with Getting Started for the 5‑minute setup.
+- See Pairing for QR/deep link and token details.
+- See Connectivity for Tailscale vs LAN guidance and security.

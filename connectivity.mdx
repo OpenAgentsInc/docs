@@ -1,0 +1,39 @@
+---
+title: Connectivity
+description: Connect over Tailscale (recommended) or your local network.
+icon: globe
+---
+
+## Tailscale vs LAN
+
+Recommended: Tailscale
+- Works anywhere with internet; stable 100.x address
+- Avoids router/NAT headaches; secure private tailnet
+- Tricoder auto‑detects and prefers your Tailscale IP
+
+LAN fallback
+- Works when phone and desktop are on the same Wi‑Fi
+- Uses a private IPv4 (e.g., 192.168/10/172 ranges)
+- Tricoder auto‑selects a suitable LAN IP when Tailscale isn’t available
+
+## Addresses and ports
+
+- WebSocket: `ws://<host>:8787/ws`
+- Default bind: `0.0.0.0:8787` (reach via Tailscale or LAN)
+
+CLI flags and env
+- `TRICODER_BRIDGE_PORT`: change the port (default 8787)
+- `TRICODER_BRIDGE_BIND`: override bind (e.g., `127.0.0.1:8787` for localhost only)
+- `TRICODER_PREFER`: `tailscale` or `lan` to override auto‑selection
+
+## Security
+
+- Token auth is required for any non‑localhost bind and is enabled by default.
+- The token persists in `~/.openagents/bridge.json` to avoid rescans.
+- Only use a localhost‑only bind without a token for explicit, short‑lived development.
+
+## Troubleshooting
+
+- Tailscale: ensure you’re logged in and the device has a 100.x IP.
+- LAN: verify both devices are on the same subnet and the port (8787) is reachable.
+- Re‑pair: use `--rotate-token` to rotate if you intentionally changed tokens.

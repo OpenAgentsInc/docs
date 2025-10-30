@@ -1,0 +1,30 @@
+---
+title: Troubleshooting
+description: Fix common pairing and connectivity issues.
+icon: life-ring
+---
+
+## Mobile cannot connect
+
+- Verify the bridge is running and listening on `0.0.0.0:8787` or your chosen bind.
+- Check the host/IP: prefer your Tailscale IP (100.x); otherwise use LAN IP.
+- Ensure the token matches your bridge (it’s persisted in `~/.openagents/bridge.json`).
+
+## Tailscale not detected
+
+- Log in to Tailscale on your desktop; confirm you have a 100.x address.
+- If you prefer LAN, set `TRICODER_PREFER=lan` before running the CLI.
+
+## LAN issues
+
+- Confirm both devices are on the same subnet and no VPN is forcing traffic elsewhere.
+- Check local firewall rules for port 8787.
+
+## Token mismatch after reinstall
+
+- Rotate intentionally with `npx tricoder --rotate-token`.
+- If you copied configs across machines, ensure the mobile app is re‑paired with the new token.
+
+## Still stuck?
+
+Open an issue with details (OS, CLI output, IP mode used, logs) at https://github.com/OpenAgentsInc/openagents/issues

@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "OpenAgents",
+  "name": "OpenAgents Tricoder",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -29,16 +29,6 @@
       "name": "Home",
       "icon": "house",
       "url": "https://openagents.com"
-    },
-    {
-      "name": "Changelog",
-      "icon": "newspaper",
-      "url": "https://openagents.com/changelog"
-    },
-    {
-      "name": "Community",
-      "icon": "users",
-      "url": "https://stacker.news/~openagents"
     }
   ],
   "navigation": [
@@ -46,18 +36,22 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "chat",
-        "build-agents"
+        "getting-started",
+        "pairing",
+        "connectivity"
       ]
     },
     {
-      "group": "Advanced",
+      "group": "Use Tricoder",
       "pages": [
-        "architecture",
-        "plugins",
-        "python-sdk",
-        "running-a-pool",
-        "custom-rag-pipeline"
+        "using-tricoder",
+        "troubleshooting"
+      ]
+    },
+    {
+      "group": "Architecture",
+      "pages": [
+        "architecture"
       ]
     }
   ],
