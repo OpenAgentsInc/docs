@@ -6,13 +6,13 @@ icon: diagram-project
 
 ## Overview
 
-Tricoder consists of a local Rust bridge, a mobile app (Expo), and a lightweight local sync store (Tinyvex). The bridge supervises the Codex CLI, exposes a secure WebSocket, and syncs live session state.
+Tricoder consists of a local Rust bridge, a mobile app (Expo), and a lightweight local sync store (Tinyvex). The bridge supervises Codex CLI or Claude Code, exposes a secure WebSocket, and syncs live session state.
 
 ## Components
 
 - Bridge (Rust)
   - WebSocket server on `ws://<host>:8787/ws`
-  - Spawns/controls the Codex CLI and streams JSONL events
+  - Spawns/controls Codex CLI or Claude Code and streams JSONL events
   - Writes to Tinyvex (SQLite) for fast local queries and history
 
 - Tinyvex (local sync)
@@ -25,7 +25,7 @@ Tricoder consists of a local Rust bridge, a mobile app (Expo), and a lightweight
 
 ## Data Flow
 
-1) User prompt from the app → bridge control → Codex CLI
+1) User prompt from the app → bridge control → Codex CLI or Claude Code
 2) CLI stdout/stderr (structured JSONL) → bridge → Tinyvex upserts + WS stream
 3) App subscribes to Tinyvex streams for low‑latency rendering
 
